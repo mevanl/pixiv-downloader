@@ -1,21 +1,19 @@
 from pixivpy3 import *
-from modules.download_image import download_image
+from modules.download_artwork import download_artwork
 from config import config
 
 def menu():
     while True:
         print("\n\n\tPIXIV SCRIPT\t\n")
-        print("1. Download Illustration/Manga\n2. Download Ugoria\n3. Quit")
+        print("1. Download Artwork\n2. Download Novel\n3. Quit")
 
         choice = input("Choose an option by entering the number (i.e. enter '1'): ")
         match choice:
             case "1":
-                ill_id = input("Enter illustration ID: ")
-                download_image(api, ill_id)
-                break
+                art_id = input("Enter Artwork ID: ")
+                download_artwork(api, art_id)
             case "2":
-                print("UGORIA??")
-                break
+                print("Novel")
             case "3":
                 quit()
                 
