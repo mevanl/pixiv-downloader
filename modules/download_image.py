@@ -17,8 +17,9 @@ def download_image(api, illustration_id: int) -> None:
 
     #  Handles downloading multiple or single illustrations on one post. 
     if illust['page_count'] > 1:
+        print('Download Starting...')
         for i in range(0, illust['page_count']):
-            print(f'Download Starting\nDownloading page {i}')
+            print(f'Downloading page {i}')
             api.download(illust['meta_pages'][i]['image_urls']['original'])
         print(f'Download finished. {i+1} illustrations downloaded.')
         return
