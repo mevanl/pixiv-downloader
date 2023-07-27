@@ -1,2 +1,3 @@
 requests
 pixivpy3
+Pillow

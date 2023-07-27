@@ -16,6 +16,8 @@ def menu():
                 print("Novel")
             case "3":
                 quit()
+            case  _:
+                print("Invalid Input. Please Select either: 1, 2, or 3.")
                 
 
 if __name__ == "__main__":
