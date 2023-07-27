@@ -49,7 +49,7 @@ class Artwork():
     def download_urls(self) -> list:
         url_list: list = []     
         if self.type == 'ugoira':
-            url_list.append(self.ugoira_metadata['zip_urls']['medium'])
+            url_list.append(self.ugoira_metadata['ugoira_metadata']['zip_urls']['medium'])
             return url_list
         elif self.page_count > 1:
             for i in range(0, self.page_count):

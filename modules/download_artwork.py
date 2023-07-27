@@ -1,4 +1,3 @@
-from pixivpy3 import *
 from modules.Artwork import Artwork
 from modules.download_ugoira import download_ugoira
 
@@ -15,7 +14,7 @@ def download_artwork(api, artwork_id: int) -> None:
         print('Error! This illustration does not exist or it is not possible to access this content.')
         return
     
-    artwork = Artwork(artwork_jsonDICT['illust'], (api.ugoira_metadata(artwork_id))['ugoira_metadata'])
+    artwork = Artwork(artwork_jsonDICT['illust'], (api.ugoira_metadata(artwork_id)))
 
     #  Handles downloading ugoira 
     if artwork.type == 'ugoira':
