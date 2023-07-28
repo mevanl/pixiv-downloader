@@ -1,17 +1,17 @@
-from modules.Artwork import Artwork
+from modules.artwork import Artwork
 from modules.download_ugoira import download_ugoira
 
  
 def download_artwork(api, artwork_id: int) -> None:
     """
     parameters: 
-    -artwork_id allows us to identify which image the user wishs to download
+    -artwork_id allows us to identify which image the user wishes to download
     """
     artwork_jsonDICT = api.illust_detail(artwork_id)
 
     #  If image does not exist, privated, etc. 
     if artwork_jsonDICT.get('error'):
-        print('Error! This illustration does not exist or it is not possible to access this content.')
+        print('Error! This artwork does not exist or it is not possible to access this content.')
         return
     
     artwork = Artwork(artwork_jsonDICT['illust'], (api.ugoira_metadata(artwork_id)))

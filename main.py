@@ -1,6 +1,7 @@
 from pixivpy3 import *
 from modules.download_artwork import download_artwork
-from config import config
+from modules.download_novel import download_novel
+from config import Config
 
 def menu():
     while True:
@@ -13,7 +14,8 @@ def menu():
                 art_id = input("Enter Artwork ID: ")
                 download_artwork(api, art_id)
             case "2":
-                print("Novel")
+                novel_id = input("Enter Novel ID: ")
+                download_novel(api, novel_id)
             case "3":
                 quit()
             case  _:
@@ -22,7 +24,7 @@ def menu():
 
 if __name__ == "__main__":
     api = AppPixivAPI()
-    REFRESH_TOKEN = config('REFRESH_TOKEN')
+    REFRESH_TOKEN = Config('REFRESH_TOKEN')
     api.auth(refresh_token=REFRESH_TOKEN)
 
     menu()
