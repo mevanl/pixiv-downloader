@@ -1,5 +1,13 @@
-# pixiv-downloader
-Allows users to access Pixiv and download some illustrations
+![Pixiv Downloader](pd.png)
+#Overview
+Makes the downloading of illustrations, manga, ugoira, and novels from Pixiv easy.
+    
 ## Description 
-_Pixiv Downloader_ is designed to help me learn [pixivpy](https://github.com/upbit/pixivpy) by [upbit](https://github.com/upbit).
-It will cover logins, grabbing and downloading images, custom download names, etc. 
+_Pixiv Downloader_ is built on [pixivpy](https://github.com/upbit/pixivpy)'s api by [upbit](https://github.com/upbit).
+It is text-menu based and will be the backbone for a future GUI release. 
+Major features include:
+* Downloading all types artwork from Pixiv: Illustrations, Manga, and Ugoira (as .GIF)
+* Supports downloading of novels (as TXT files)
+* Custom download locations 
+* Custom file names
+
