@@ -1,5 +1,7 @@
 from modules.artwork import Artwork
 from modules.download_ugoira import download_ugoira
+from settings import formatter
+import os
 
  
 def download_artwork(api, artwork_id: int) -> None:
@@ -20,14 +22,23 @@ def download_artwork(api, artwork_id: int) -> None:
     if artwork.type == 'ugoira':
         for i in artwork.download_urls():
             api.download(i, name='archive.zip')
-        download_ugoira(api.ugoira_metadata(artwork_id)['ugoira_metadata']['frames'])
+        download_ugoira(api.ugoira_metadata(artwork_id)['ugoira_metadata']['frames'], art=artwork)
         return
     
     #  Handles downloading multiple or single illustrations/Manga on one post. 
     print('Download Starting...')
+    page: int = 0
     for i in artwork.download_urls():
         print(f'Downloading {i}')
-        api.download(i)
+        if artwork.type == 'illust':
+            api.download(i, 
+                         path=formatter(path=os.environ.get("ILLUST_PATH"), art=artwork), 
+                         name=formatter(filename=os.environ.get("ILLUST_FILENAME"), art=artwork, pagenum=page))
+        else:
+            api.download(i, 
+                        path=formatter(path=os.environ.get("MANGA_PATH"), art=artwork),
+                        name=formatter(filename=os.environ.get("MANGA_FILENAME"), art=artwork, pagenum=page))             
+        page += 1
     print(f'Download finished.')
     return
  

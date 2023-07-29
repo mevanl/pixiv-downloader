@@ -1,3 +1,4 @@
+import re
 
 
 class Novel():
@@ -15,6 +16,7 @@ class Novel():
         self.__page_count = novel['page_count']
         self.__text_length = novel['text_length']
         self.__text = text
+        self.__date = novel['create_date']
         self.__seriesID = novel['series']['id']
         self.__seriesTitle = novel['series']['title']
 
@@ -22,6 +24,9 @@ class Novel():
         self.__userID = novel['user']['id']
         self.__username = novel['user']['name']
 
+    def remove_specialChar(self, text: str) -> str:
+        text = re.sub("[\/:*?\"<>|]", "", text)
+        return text 
     
     @property
     def novel(self) -> dict:
@@ -33,6 +38,7 @@ class Novel():
     
     @property
     def title(self) -> str:
+        self.__title = self.remove_specialChar(self.__title)
         return self.__title
     
     @property
@@ -46,6 +52,10 @@ class Novel():
     @property 
     def text(self) -> str:
         return self.__text
+    
+    @property
+    def date(self) -> str:
+        return self.__date
 
     @property
     def seriesID(self) -> int:
@@ -53,6 +63,7 @@ class Novel():
     
     @property
     def seriesTitle(self) -> str:
+        self.__seriesTitle = self.remove_specialChar(self.__seriesTitle)
         return self.__seriesTitle
     
     @property
@@ -61,5 +72,6 @@ class Novel():
     
     @property
     def username(self) -> str:
+        self.__username = self.remove_specialChar(self.__username)
         return self.__username
     

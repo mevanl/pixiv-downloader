@@ -1,4 +1,7 @@
 from modules.novel import Novel
+import os
+import shutil
+from settings import formatter
 
 def download_novel(api, novel_id: int) -> None:
     """
@@ -13,11 +16,14 @@ def download_novel(api, novel_id: int) -> None:
         return 
     
     novel = Novel(novel_jsonDict['novel'], api.novel_text(novel_id)['novel_text'])
+    novel_title = formatter(filename=(os.environ.get("NOVEL_FILENAME")), novel=novel)
+    novel_location = formatter(path=os.environ.get("NOVEL_PATH"), novel=novel)
 
     print("Creating novel file...")
-    novel_file = open(f'{novel.title}.txt', 'w', encoding='utf-8')
+    novel_file = open(novel_title, 'w', encoding='utf-8')
     print("Created novel file, adding text...")
     novel_file.write(novel.text)
     print("Download finished.")
     novel_file.close()
+    shutil.move(os.path.curdir + "\\" + novel_title, novel_location)
     return 
