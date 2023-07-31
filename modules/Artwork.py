@@ -12,11 +12,14 @@ class Artwork():
         self.__ugoira_metadata = ugoira_metadata
         self.__id = illust['id']
         self.__type = illust['type']
-        self.__seriesID = None
-        self.__seriesTitle = None
+        try:
+            self.__seriesID = illust['series']['id']
+            self.__seriesTitle = illust['series']['title']
+        except TypeError:
+            self.__seriesID = "No series"
+            self.__seriesTitle = "No series"
         self.__title = illust['title']
         self.__pagecount = illust['page_count']
-        self.__series = None
 
         #  User of Artwork 
         self.__userID = illust['user']['id']
@@ -41,29 +44,6 @@ class Artwork():
     def type(self) -> str:
         return self.__type
     
-
-    @property
-    def seriesID(self) -> int:
-        if self.type == 'manga':
-            try:
-                self.__seriesID = self.illust['series']['id']
-                self.__seriesID = self.remove_specialChar(self.__seriesID)
-                return self.__seriesID
-            except Exception:
-                self.__seriesID = "no series"
-                return self.__seriesID
-        
-    @property
-    def seriesTitle(self) -> str:
-        if self.type == 'manga':
-            try:
-                self.__seriesTitle = self.illust['series']['title']
-                self.__seriesTitle = self.remove_specialChar(self.__seriesTitle)
-                return self.__seriesTitle
-            except Exception:
-                self.__seriesTitle = "No series"
-                return self.__seriesTitle
-    
     @property
     def title(self) -> str:
         self.__title = self.remove_specialChar(self.__title)
@@ -72,15 +52,16 @@ class Artwork():
     @property
     def page_count(self) -> int:
         return self.__pagecount
-    
+        
     @property
-    def series(self) -> str:
-        try:
-            self.__series = self.illust['series']
-            return self.__series
-        except Exception:
-            self.__series = "No series"
-            return self.__series
+    def seriesID(self) -> int:
+        return self.__seriesID
+        
+    @property
+    def seriesTitle(self) -> str:
+        self.__seriesTitle = self.remove_specialChar(self.__seriesTitle)
+        return self.__seriesTitle
+    
     
     @property
     def userID(self) -> int:

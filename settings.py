@@ -60,19 +60,18 @@ def formatter(path: str=None, filename: str=None, pagenum: int=None, art: Artwor
             "art_id": art.id,
             "art_type": art.type,
             "art_title": art.title,
-            "manga_seriesTitle": None,
-            "manga_seriesID": None,
+            "manga_seriesTitle": art.seriesTitle, # was None
+            "manga_seriesID": art.seriesID,       # was None
             "art_pagecount": art.page_count,
-            "art_series": art.series,
             "art_pagenum": pagenum,
 
             "author_id": art.userID,
             "author_name": art.username
         }
         #  If type is manga, set the manga specific tags, will throw error if artwork isnt manga unless done like this 
-        if art.type == 'manga':
-            art_key["manga_seriesID"] = art.seriesID
-            art_key["manga_seriesTitle"] = art.seriesTitle
+        #if art.type == 'manga':
+            #art_key["manga_seriesID"] = art.seriesID
+            #art_key["manga_seriesTitle"] = art.seriesTitle
 
         #  If working with non-novel format the path or filename with the art key dict, since we would only call either for path or for filename, dont need to get both at once
         if path != None:

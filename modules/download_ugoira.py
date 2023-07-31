@@ -32,4 +32,7 @@ def download_ugoira(ugoira_frames: dict, art: Artwork) -> None:
     #  delete the extracted zip and the zip itself, only left with gif, then move to correct location 
     shutil.rmtree('archive')
     os.remove('archive.zip')
-    shutil.move(os.path.curdir + "\\" + ugoira_title, ugoira_location)
+    try:
+        shutil.move(os.path.curdir + "\\" + ugoira_title, ugoira_location)
+    except shutil.Error:
+        pass # Basically if they want to download it to the current directory of this program, it will throw an error saying it is already here

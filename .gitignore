@@ -1,4 +1,6 @@
 __pycache__
 token.txt
-test_illust.py
-test_novel.py
+illust_testbed.py
+novel_testbed.py
+.pytest_cache
+logo.png
