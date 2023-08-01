@@ -18,7 +18,7 @@ def defaults():
 
     #  If Illust path and filename is not set, set to current directory and filenames to artwork's id and current pagenumber
     if not dotenv.get_key(dotenv_file, "ILLUST_PATH"):
-        os.environ["ILLUST_PATH"] = os.path.curdir
+        os.environ["ILLUST_PATH"] = os.path.curdir + "\downloads"
         dotenv.set_key(dotenv_file, "ILLUST_PATH", os.environ["ILLUST_PATH"])
 
     if not dotenv.get_key(dotenv_file, "ILLUST_FILENAME"):
@@ -27,7 +27,7 @@ def defaults():
 
     #  If manga path and filename is not set, set to current directory and filenames to artwork's id and current pagenumber
     if not dotenv.get_key(dotenv_file, "MANGA_PATH"):
-        os.environ["MANGA_PATH"] = os.path.curdir
+        os.environ["MANGA_PATH"] = os.path.curdir + "\downloads"
         dotenv.set_key(dotenv_file, "MANGA_PATH", os.environ["MANGA_PATH"])
 
     if not dotenv.get_key(dotenv_file, "MANGA_FILENAME"):
@@ -36,7 +36,7 @@ def defaults():
 
     #  If ugoira path and filename is not set, set to current directory and filenames to artwork's id
     if not dotenv.get_key(dotenv_file, "UGOIRA_PATH"):
-        os.environ["UGOIRA_PATH"] = os.path.curdir
+        os.environ["UGOIRA_PATH"] = os.path.curdir + "\downloads"
         dotenv.set_key(dotenv_file, "UGOIRA_PATH", os.environ["UGOIRA_PATH"])
 
     if not dotenv.get_key(dotenv_file, "UGOIRA_FILENAME"):
@@ -45,7 +45,7 @@ def defaults():
 
     #  If novel path and filename is not set, set to current directory and filenames to artwork's id
     if not dotenv.get_key(dotenv_file, "NOVEL_PATH"):
-        os.environ["NOVEL_PATH"] = os.path.curdir
+        os.environ["NOVEL_PATH"] = os.path.curdir + "\downloads"
         dotenv.set_key(dotenv_file, "NOVEL_PATH", os.environ["NOVEL_PATH"])
 
     if not dotenv.get_key(dotenv_file, "NOVEL_FILENAME"):
