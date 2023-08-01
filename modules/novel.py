@@ -13,12 +13,14 @@ class Novel():
         self.__novel = novel
         self.__id = novel['id']
         self.__title = novel['title']
-        self.__page_count = novel['page_count']
         self.__text_length = novel['text_length']
         self.__text = text
-        self.__date = novel['create_date']
-        self.__seriesID = novel['series']['id']
-        self.__seriesTitle = novel['series']['title']
+        try:
+            self.__seriesID = novel['series']['id']
+            self.__seriesTitle = novel['series']['title']
+        except Exception:
+            self.__seriesID = "No series"
+            self.__seriesTitle = "No series"
 
         #  Author 
         self.__userID = novel['user']['id']
@@ -42,20 +44,12 @@ class Novel():
         return self.__title
     
     @property
-    def page_count(self) -> int:
-        return self.__page_count
-    
-    @property
     def text_length(self) -> int:
         return self.__text_length
     
     @property 
     def text(self) -> str:
         return self.__text
-    
-    @property
-    def date(self) -> str:
-        return self.__date
 
     @property
     def seriesID(self) -> int:

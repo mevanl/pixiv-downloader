@@ -25,5 +25,8 @@ def download_novel(api, novel_id: int) -> None:
     novel_file.write(novel.text)
     print("Download finished.")
     novel_file.close()
-    shutil.move(os.path.curdir + "\\" + novel_title, novel_location)
+    try:
+        shutil.move(os.path.curdir + "\\" + novel_title, novel_location)
+    except shutil.Error:
+        pass # Basically if they want to download it to the current directory of this program, it will throw an error saying it is already here
     return 

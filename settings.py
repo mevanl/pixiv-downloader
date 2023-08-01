@@ -49,7 +49,7 @@ def defaults():
         dotenv.set_key(dotenv_file, "NOVEL_PATH", os.environ["NOVEL_PATH"])
 
     if not dotenv.get_key(dotenv_file, "NOVEL_FILENAME"):
-        os.environ["NOVEL_FILENAME"] = '{novel_seriesTitle}: {novel_title}'
+        os.environ["NOVEL_FILENAME"] = '{novel_seriesTitle}, {novel_title}'
         dotenv.set_key(dotenv_file, "NOVEL_FILENAME", os.environ["NOVEL_FILENAME"])
         
 
@@ -93,8 +93,6 @@ def formatter(path: str=None, filename: str=None, pagenum: int=None, art: Artwor
             "novel_title": novel.title,
             "novel_seriesID": novel.seriesID,
             "novel_seriesTitle": novel.seriesTitle,
-            "novel_pagecount": novel.page_count,
-            "nove_date": novel.date,
 
             "author_id": novel.userID,
             "author_name": novel.username
@@ -107,17 +105,24 @@ def formatter(path: str=None, filename: str=None, pagenum: int=None, art: Artwor
             return path
         else:
             filename = filename.format(**novel_key)
-            filename = filename
+            filename = filename + ".txt"
+            print(filename)
             return filename
 
 
 
 def illustration_filename():
+    """
+    Allows for changing illstration's file names via enivornment variables
+    """
     filename: str = input("Enter new filename: ")
     os.environ["ILLUST_FILENAME"] = filename
     dotenv.set_key(dotenv.find_dotenv(), "ILLUST_FILENAME", os.environ["ILLUST_FILENAME"])
 
 def illustration_path():
+    """
+    Allows for changing illstration's path via enivornment variables
+    """
     path: str = input("Enter new path: ")
     os.environ["ILLUST_PATH"] = path
     dotenv.set_key(dotenv.find_dotenv(), "ILLUST_PATH", os.environ["ILLUST_PATH"])
@@ -140,11 +145,17 @@ def illustration_menu():
                 print("Invalid Input. Please Select either: 1, 2, or 3.")
 
 def manga_filename():
+    """
+    Allows for changing manga's file names via enivornment variables
+    """
     filename: str = input("Enter new filename: ")
     os.environ["MANGA_FILENAME"] = filename
     dotenv.set_key(dotenv.find_dotenv(), "MANGA_FILENAME", os.environ["MANGA_FILENAME"])
 
 def manga_path():
+    """
+    Allows for changing manga's path via enivornment variables
+    """
     path: str = input("Enter new path: ")
     os.environ["MANGA_PATH"] = path
     dotenv.set_key(dotenv.find_dotenv(), "MANGA_PATH", os.environ["MANGA_PATH"])
@@ -167,11 +178,17 @@ def manga_menu():
                 print("Invalid Input. Please Select either: 1, 2, or 3.")
 
 def ugoira_filename():
+    """
+    Allows for changing ugoira's file names via enivornment variables
+    """
     filename: str = input("Enter new filename: ")
     os.environ["UGOIRA_FILENAME"] = filename
     dotenv.set_key(dotenv.find_dotenv(), "UGOIRA_FILENAME", os.environ["UGOIRA_FILENAME"])
 
 def ugoira_path():
+    """
+    Allows for changing ugoira's path via enivornment variables
+    """
     path: str = input("Enter new path: ")
     os.environ["UGOIRA_PATH"] = path
     dotenv.set_key(dotenv.find_dotenv(), "UGOIRA_PATH", os.environ["UGOIRA_PATH"])
@@ -194,11 +211,17 @@ def ugoira_menu():
                 print("Invalid Input. Please Select either: 1, 2, or 3.")
 
 def novel_filename():
+    """
+    Allows for changing novel's file names via enivornment variables
+    """
     filename: str = input("Enter new filename: ")
     os.environ["NOVEL_FILENAME"] = filename
     dotenv.set_key(dotenv.find_dotenv(), "NOVEL_FILENAME", os.environ["NOVEL_FILENAME"])
 
 def novel_path():
+    """
+    Allows for changing novel's path via enivornment variables
+    """
     path: str = input("Enter new path: ")
     os.environ["NOVEL_PATH"] = path
     dotenv.set_key(dotenv.find_dotenv(), "NOVEL_PATH", os.environ["NOVEL_PATH"])

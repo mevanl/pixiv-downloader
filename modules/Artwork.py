@@ -15,7 +15,7 @@ class Artwork():
         try:
             self.__seriesID = illust['series']['id']
             self.__seriesTitle = illust['series']['title']
-        except TypeError:
+        except Exception:
             self.__seriesID = "No series"
             self.__seriesTitle = "No series"
         self.__title = illust['title']

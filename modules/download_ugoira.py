@@ -36,3 +36,5 @@ def download_ugoira(ugoira_frames: dict, art: Artwork) -> None:
         shutil.move(os.path.curdir + "\\" + ugoira_title, ugoira_location)
     except shutil.Error:
         pass # Basically if they want to download it to the current directory of this program, it will throw an error saying it is already here
+    
+    print("Download finished.")
