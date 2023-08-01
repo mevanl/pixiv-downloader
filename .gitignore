@@ -4,3 +4,4 @@ illust_testbed.py
 novel_testbed.py
 .pytest_cache
 logo.png
+pixiv_auth.py
